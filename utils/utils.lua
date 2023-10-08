@@ -20,7 +20,7 @@ function awaitItem(item)
     while(hasItem == false) do
         cleanScreen()
         print("Locating " .. item)
-        hasItem, slotNo = checkInventory("minecraft:torch")
+        hasItem, slotNo = checkInventory(item)
         if hasItem then
             print(item .. " FOUND!")
             sleep(2)
