@@ -20,7 +20,7 @@ function awaitSelectItem(item)
     while(hasItem == false) do
         cleanScreen()
         print("Locating " .. item)
-        hasItem, slotNum = checkInventory(item)
+        hasItem, slotNo = checkInventory(item)
         if hasItem then
             print(item .. " FOUND!")
             turtle.select(slotNo)
