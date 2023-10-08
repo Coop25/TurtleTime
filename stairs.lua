@@ -11,7 +11,7 @@ function emptyInv()
     for i=1,16 do
         local slotData = turtle.getItemDetail(i)
         if slotData then
-            if (slotData.name ~= "minecraft:stone_stairs" and slotData.name ~= "minecraft:torch") then
+            if (slotData.name ~= "minecraft:cobblestone_stairs" and slotData.name ~= "minecraft:torch") then
                 turtle.select(i)
                 turtle.drop()
                 turtle.select(1)
@@ -45,7 +45,7 @@ for i = 1, yDistance do
         turtle.back()
     end
     emptyInv()
-    utils.findAndSelectItem("minecraft:stone_stairs", 2)
+    utils.findAndSelectItem("minecraft:cobblestone_stairs", 2)
     turtle.digDown()
     turtle.turnLeft()
     turtle.forward()
