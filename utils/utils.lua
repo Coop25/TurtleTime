@@ -16,25 +16,18 @@ function checkInventory(itemString)
     return false, -1
 end
 
-function awaitItem(item)
-    slotNo = -1
+function awaitSelectItem(item)
     while(hasItem == false) do
         cleanScreen()
         print("Locating " .. item)
         hasItem, slotNum = checkInventory(item)
         if hasItem then
             print(item .. " FOUND!")
-            slotNo = slotNum
+            turtle.select(slotNo)
             sleep(2)
         else
             print("ERROR: " .. item .. " Not Found Please add " .. item .. " to the inventory I will check again in 5 seconds")
             sleep(5)
         end
     end
-    return slotNo
-end
-
-function findAndSelectItem(item)
-    slotNo = awaitItem(item)
-    turtle.select(slotNo)
 end

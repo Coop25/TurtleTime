@@ -44,14 +44,14 @@ for i = 1, yDistance do
         turtle.dig()
         turtle.turnLeft()
         turtle.back()
-        utils.findAndSelectItem("minecraft:torch")
+        utils.awaitSelectItem("minecraft:torch")
         turtle.place()
     end
     for i = 1, 3 do
         turtle.back()
     end
     emptyInv()
-    utils.findAndSelectItem("minecraft:cobblestone_stairs")
+    utils.awaitSelectItem("minecraft:cobblestone_stairs")
     turtle.digDown()
     turtle.turnLeft()
     turtle.forward()
