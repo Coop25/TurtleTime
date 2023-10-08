@@ -32,18 +32,7 @@ function awaitItem(item)
     end
 end
 
-function findAndSelectItem(item, quantity)
-    while(hasItem == false) do
-        hasItem = false
-        quantity = quantity or 2
-        slotNo = awaitItem(item)
-        slotData = turtle.getItemDetail(slotNo)
-        if slotData.count > quantity then
-            turtle.select(slotNo)
-            hasItem = true
-        else
-            print("ERROR: " .. item .. " Not Found in specified quantity Please add " .. item .. " to the inventory I will check again in 5 seconds")
-            sleep(5)
-        end
-    end
+function findAndSelectItem(item)
+    slotNo = awaitItem(item)
+    turtle.select(slotNo)
 end
