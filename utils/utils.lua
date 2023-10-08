@@ -17,6 +17,7 @@ function checkInventory(itemString)
 end
 
 function awaitSelectItem(item)
+    local hasItem = false
     while(hasItem == false) do
         cleanScreen()
         print("Locating " .. item)
