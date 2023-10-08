@@ -62,6 +62,7 @@ for i = 1, yDistance do
     turtle.forward()
     turtle.forward()
     turtle.turnRight()
+    turtle.digDown()
     turtle.placeDown()
     turtle.turnRight()
     turtle.forward()
