@@ -1,7 +1,9 @@
 os.loadAPI("utils.lua")
 utils.cleanScreen()
-
-local yDistance = tonumber(io.read()) - 13
+print("What Y level is your head?: ")
+local yDistance = tonumber(io.read()) + 50
+print("How often do you want a torch?: ")
+local torchDistance = tonumber(io.read())
 turtle.dig()
 turtle.forward()
 
@@ -29,6 +31,16 @@ for i = 1, yDistance do
             turtle.forward()
         end
     end
+    if i % torchDistance == 0 then
+        turtle.dig()
+        turtle.forward()
+        turtle.turnLeft()
+        turtle.dig()
+        turtle.turnRight()
+        turtle.back()
+        utils.findAndSelectItem("minecraft:torch")
+        turtle.place()
+    end
     for i = 1, 3 do
         turtle.back()
     end
@@ -38,10 +50,13 @@ for i = 1, yDistance do
     turtle.turnLeft()
     turtle.forward()
     turtle.digDown()
-    turtle.turnRight()
-    turtle.place()
-    turtle.turnRight()
+    turtle.turnLeft()
+    turtle.placeDown()
+    turtle.turnLeft()
     turtle.forward()
+    turtle.turnRight()
+    turtle.placeDown()
+    turtle.turnLeft()
     turtle.turnLeft()
     turtle.forward()
     turtle.digDown()
