@@ -17,6 +17,7 @@ function checkInventory(itemString)
 end
 
 function awaitItem(item)
+    slotNo = -1
     while(hasItem == false) do
         cleanScreen()
         print("Locating " .. item)
@@ -24,12 +25,12 @@ function awaitItem(item)
         if hasItem then
             print(item .. " FOUND!")
             sleep(2)
-            return slotNo
         else
             print("ERROR: " .. item .. " Not Found Please add " .. item .. " to the inventory I will check again in 5 seconds")
             sleep(5)
         end
     end
+    return slotNo
 end
 
 function findAndSelectItem(item)
