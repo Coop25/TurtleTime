@@ -55,6 +55,11 @@ function emptyEnv()
     end
 end
 
+function placeTorch()
+    utils.awaitSelectItem("minecraft:torch")
+    turtle.place()
+end
+
 function vein()
     for i = 1, veinLength do
         turtle.dig()
@@ -65,6 +70,12 @@ function vein()
             turtle.down()
             emptyEnv()
             turtle.up()
+        end
+        if i % 7 == 0 then
+            turtle.turnRight()
+            turtle.dig()
+            placeTorch()
+            turtle.turnLeft()
         end
     end
     turtle.turnLeft()
@@ -94,6 +105,13 @@ for i=1,mainHallLength do
         vein()
         turtle.down()
         turtle.forward()
+        turtle.turnRight()
+    end
+    if i % 7 == 0 then
+        turtle.turnRight()
+        turtle.turnRight()
+        placeTorch()
+        turtle.turnRight()
         turtle.turnRight()
     end
 end
