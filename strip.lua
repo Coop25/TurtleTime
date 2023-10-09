@@ -59,7 +59,7 @@ function emptyEnv()
         if slotData then
             if (string.match(slotData.name, "chest") == nil and string.match(slotData.name, "torch") == nil) then
                 turtle.select(i)
-                turtle.drop()
+                turtle.dropDown()
             end
         end
     end
