@@ -65,9 +65,23 @@ function emptyEnv()
     end
 end
 
+local torchSlot = -1
+local hasTorch = false
+
 function placeTorch()
-    utils.awaitSelectItem("minecraft:torch")
-    turtle.place()
+    if torchSlot ~= -1 then
+        slotData = turtle.getItemDetail(torchSlot)
+        if slotData == nil then
+            torchSlot = -1
+        end
+    end
+    if torchSlot == -1 then
+        hasTorch, torchSlot = utils.checkInventory("minecraft:torch")
+    end
+    if hasTorch then
+        turtle.select(torchSlot)
+        turtle.place()
+    end
 end
 
 function vein()
