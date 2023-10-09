@@ -52,7 +52,7 @@ end
 
 function emptyEnv()
     utils.awaitSelectItem("minecraft:chest")
-    turtle.dig()
+    turtle.digDown()
     turtle.placeDown()
     for i = 1, 16 do
         local slotData = turtle.getItemDetail(i)
