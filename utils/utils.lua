@@ -32,3 +32,18 @@ function awaitSelectItem(item)
         end
     end
 end
+
+function isInventoryFull()
+    local slotsOccupied = 0
+    for i=1,16 do
+        local slotData = turtle.getItemDetail(i)
+        if slotData then
+            slotsOccupied = slotsOccupied + 1
+        end
+    end
+    if (slotsOccupied == 16) then
+        return true
+    else 
+        return false
+    end
+end
