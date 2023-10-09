@@ -13,27 +13,37 @@ function updateScreen(hallLen, veinLen)
     utils.cleanScreen()
     print("Current Progress")
     print("----------------")
-    print("Hall Length ",hallLen,"/",mainHallLength)
-    print("Vein Length ",veinLen,"/",veinLength)
+    print("Hall Length ", hallLen, "/", mainHallLength)
+    print("Vein Length ", veinLen, "/", veinLength)
 end
 
 function digSides()
     turtle.turnLeft()
-    turtle.dig()
+    while turtle.detect() do
+        turtle.dig()
+    end
     turtle.turnRight()
     turtle.turnRight()
-    turtle.dig()
+    while turtle.detect() do
+        turtle.dig()
+    end
     turtle.turnLeft()
 end
 
 function hallSlice()
-    turtle.dig()
+    while turtle.detect() do
+        turtle.dig()
+    end
     turtle.forward()
     digSides()
-    turtle.digUp()
+    while turtle.detectUp() do
+        turtle.digUp()
+    end
     turtle.up()
     digSides()
-    turtle.digUp()
+    while turtle.detectUp() do
+        turtle.digUp()
+    end
     turtle.up()
     digSides()
     turtle.down()
@@ -44,7 +54,7 @@ function emptyEnv()
     utils.awaitSelectItem("minecraft:chest")
     turtle.dig()
     turtle.placeDown()
-    for i=1,16 do
+    for i = 1, 16 do
         local slotData = turtle.getItemDetail(i)
         if slotData then
             if (string.match(slotData.name, "chest") == nil and string.match(slotData.name, "torch") == nil) then
@@ -62,9 +72,13 @@ end
 
 function vein()
     for i = 1, veinLength do
-        turtle.dig()
+        while turtle.detect() do
+            turtle.dig()
+        end
         turtle.forward()
-        turtle.digUp()
+        while turtle.detectUp() do
+            turtle.digUp()
+        end
         turtle.digDown()
         if utils.isInventoryFull() then
             turtle.down()
@@ -73,19 +87,21 @@ function vein()
         end
         if i % 7 == 0 then
             turtle.turnRight()
-            turtle.dig()
+            while turtle.detect() do
+                turtle.dig()
+            end
             placeTorch()
             turtle.turnLeft()
         end
     end
     turtle.turnLeft()
     turtle.turnLeft()
-    for i = 1, veinLength-1 do
+    for i = 1, veinLength - 1 do
         turtle.forward()
     end
 end
 
-for i=1,mainHallLength do
+for i = 1, mainHallLength do
     hallSlice()
     if utils.isInventoryFull() then
         emptyEnv()
